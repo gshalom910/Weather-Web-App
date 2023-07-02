@@ -1,7 +1,7 @@
-import CoderSec from "./components/CoderSec";
-import FirstSec from "./components/FirstSec";
-import SearchForm from "./components/SearchForm";
-import SecondSec from "./components/SecondSec";
+import CoderSec from "./components/CoderSec/CoderSec";
+import FirstSec from "./components/FirstSec/FirstSec";
+import SearchForm from "./components/SearchForm/SearchForm";
+import SecondSec from "./components/SecondSec/SecondSec";
 
 import "./styles.css";
 

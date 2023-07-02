@@ -1,0 +1,16 @@
+.card {
+  background-image: url("../../images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  /*   border-radius: 22px; */
+}
+.card-body {
+  background-color: rgba(245, 248, 250, 0.514);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.temp-li {
+  color: black;
+  font-weight: 700;
+}
