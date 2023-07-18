@@ -1,4 +1,3 @@
-import React from "react";
 import "./card.css";
 
 export default function Card(props) {
@@ -11,7 +10,7 @@ export default function Card(props) {
         <div className="card text-center mt-4">
           <div className="card-body">
             <li className="style-li mb-3 ms-3 me-2">
-              <i class="fa-solid fa-cloud fa-beat-fade"></i>
+              <i className="fa-solid fa-cloud fa-beat-fade"></i>
               {/* <i className="fa-beat-fade"></i> */}
             </li>
             <li className="temp-li">

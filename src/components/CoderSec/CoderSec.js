@@ -1,9 +1,8 @@
-import React from "react";
 import "./coder.css";
 
 export default function CoderSec() {
   return (
-    <div class="container coder my-2">
+    <div className="container coder my-2">
       <a
         href="https://github.com/gshalom910/weather-web-app"
         target="_blank"

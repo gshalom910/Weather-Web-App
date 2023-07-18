@@ -9,10 +9,10 @@ export default function App() {
   return (
     <>
       <CoderSec />
-      <div class="container main-wrapper">
-        <div class="inner-wrapper">
+      <div className="container main-wrapper">
+        <div className="inner-wrapper">
           <SearchForm />
-          <FirstSec />
+          {/* <FirstSec /> */}
           <SecondSec />
         </div>
       </div>

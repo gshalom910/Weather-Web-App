@@ -1,50 +1,45 @@
-import React from "react";
 import "./firstSec.css";
-import cloudy from "../../images/cloudy.png";
+import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
 
-export default function FirstSec() {
+export default function FirstSec(props) {
+  const { celiTemp, date, city, humidity, pressure, desc, wind, icon } =
+    props.weatherData;
   return (
     <section className="mx-5 ps-2 m-md-5">
       <div className="row">
         <div className="col-8 col-md-9 col-lg-10">
-          <h1 id="cityName">Addis Ababa</h1>
-          <p id="today">
-            Sun 16 : 01 <br />
-            April 25, 2023
-          </p>
-          {/* </span> */}
+          <h1>{city}</h1>
+          <FormattedDate date={date} />
         </div>
         <div className="col-4 col-md-3 col-lg-2">
-          <h1 id="temp">21</h1>
+          <h1 id="temp">{Math.round(celiTemp)}</h1>
           <span className="units">
-            <a href="/" id="celsius-link" className="active">
+            <a href="/" className="active">
               ℃
             </a>{" "}
-            |
-            <a href="/" id="fahrenheit-link">
-              ℉
-            </a>
+            |<a href="/"> ℉</a>
           </span>
         </div>
       </div>
       <div className="row ">
         <div className="col-5 col-md-3">
           <div>
-            <img id="main-img" src={cloudy} alt="cloudy" width="53" />
+            <WeatherIcon animateIcon={icon} />
           </div>
-          <h3 id="weather-description">Cloudy</h3>
+          <h3 id="weather-description">{desc}</h3>
         </div>
         <ul className="col col-lg-3">
           <li className="col-li">
-            Pressure : <span id="pressure">20</span>
+            Pressure : <span>{pressure}</span>
             <span> hPa</span>
           </li>
           <li className="col-li">
-            Humidty : <span id="humid">70</span>
-            <span>%</span>
+            Humidty : <span>{humidity}</span>
+            <span> %</span>
           </li>
           <li className="col-li">
-            Wind : <span id="wind">10</span> <span>km/h</span>
+            Wind : <span>{Math.round(wind * 3.6)}</span> <span>km/h</span>
           </li>
         </ul>
       </div>
