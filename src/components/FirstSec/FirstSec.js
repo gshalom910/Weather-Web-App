@@ -1,9 +1,10 @@
 import "./firstSec.css";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemp from "./WeatherTemp";
 
 export default function FirstSec(props) {
-  const { celiTemp, date, city, humidity, pressure, desc, wind, icon } =
+  const { temp, date, city, humidity, pressure, desc, wind, icon } =
     props.weatherData;
   return (
     <section className="mx-5 ps-2 m-md-5">
@@ -12,15 +13,7 @@ export default function FirstSec(props) {
           <h1>{city}</h1>
           <FormattedDate date={date} />
         </div>
-        <div className="col-4 col-md-3 col-lg-2">
-          <h1 id="temp">{Math.round(celiTemp)}</h1>
-          <span className="units">
-            <a href="/" className="active">
-              ℃
-            </a>{" "}
-            |<a href="/"> ℉</a>
-          </span>
-        </div>
+        <WeatherTemp celsTemp={temp} />
       </div>
       <div className="row ">
         <div className="col-5 col-md-3">

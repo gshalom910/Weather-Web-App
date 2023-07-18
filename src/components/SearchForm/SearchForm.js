@@ -9,7 +9,7 @@ function SearchForm() {
   function handleResponse(response) {
     setWeather({
       ready: true,
-      celiTemp: Math.round(response.data.main.temp),
+      temp: Math.round(response.data.main.temp),
       date: new Date(response.data.dt * 1000),
       city: response.data.name,
       humidity: response.data.main.humidity,
