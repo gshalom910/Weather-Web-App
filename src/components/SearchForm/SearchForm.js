@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Oval } from "react-loader-spinner";
 import axios from "axios";
 import "./search.css";
 import FirstSec from "../FirstSec/FirstSec";
+import SecondSec from "../SecondSec/SecondSec";
 
 function SearchForm() {
   const [weather, setWeather] = useState({ ready: false });
@@ -9,6 +11,7 @@ function SearchForm() {
   function handleResponse(response) {
     setWeather({
       ready: true,
+      coord: response.data.coord,
       temp: Math.round(response.data.main.temp),
       date: new Date(response.data.dt * 1000),
       city: response.data.name,
@@ -30,7 +33,11 @@ function SearchForm() {
   }
 
   function handleCity(e) {
-    setCity(e.target.value);
+    if (!e.target.value) {
+      setCity("Addis Ababa");
+    } else {
+      setCity(e.target.value);
+    }
   }
 
   if (weather.ready) {
@@ -70,11 +77,27 @@ function SearchForm() {
           </div>
         </form>
         <FirstSec weatherData={weather} />
+        <SecondSec coords={weather.coord} />
       </>
     );
   } else {
     search();
-    return "Loading...";
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <Oval
+          height={80}
+          width={80}
+          color="#4fa94d"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="oval-loading"
+          secondaryColor="#4fa94d"
+          strokeWidth={2}
+          strokeWidthSecondary={2}
+        />
+      </div>
+    );
   }
 }
 

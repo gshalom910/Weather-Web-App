@@ -13,7 +13,7 @@ export default function App() {
         <div className="inner-wrapper">
           <SearchForm />
           {/* <FirstSec /> */}
-          <SecondSec />
+          {/* <SecondSec /> */}
         </div>
       </div>
     </>
