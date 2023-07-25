@@ -6,6 +6,7 @@ import FirstSec from "../FirstSec/FirstSec";
 import SecondSec from "../SecondSec/SecondSec";
 
 function SearchForm() {
+  const [current, setCurrent] = useState(false);
   const [weather, setWeather] = useState({ ready: false });
   const [city, setCity] = useState("Addis Ababa");
   function handleResponse(response) {
@@ -22,13 +23,32 @@ function SearchForm() {
       icon: response.data.weather[0].icon,
     });
   }
-  function search() {
+  function searchCity() {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=616b14cbd38253313b3b8852fa77335d&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
+  function currentLocations(position) {
+    let currentLat = position.coords.latitude;
+    let currentLon = position.coords.longitude;
+    // console.log(currentLat);
+    // console.log(currentLon);
+    let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLon}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function search() {
+    if (current) {
+      navigator.geolocation.getCurrentPosition(currentLocations);
+    } else {
+      searchCity();
+    }
+  }
+
   function handleForm(e) {
     e.preventDefault();
+    setCurrent(false);
     search();
   }
 
@@ -38,6 +58,13 @@ function SearchForm() {
     } else {
       setCity(e.target.value);
     }
+  }
+
+  function getCurrent() {
+    // e.preventDefault();
+    setCurrent(true);
+    search();
+    // navigator.geolocation.getCurrentPosition(currentLocations);
   }
 
   if (weather.ready) {
@@ -67,12 +94,13 @@ function SearchForm() {
             >
               Search
             </button>
-            {/* <button
+            <button
               className="btn btn-danger my-0 ms-1 ms-md-3  px-1 px-md-2"
               type="submit"
+              onClick={getCurrent}
             >
               Current
-            </button> */}
+            </button>
           </div>
         </form>
         <FirstSec weatherData={weather} />
@@ -80,7 +108,7 @@ function SearchForm() {
       </>
     );
   } else {
-    search();
+    searchCity();
     return (
       <div className="d-flex justify-content-center align-items-center">
         <Oval
