@@ -67,13 +67,12 @@ function SearchForm() {
             >
               Search
             </button>
-            <button
+            {/* <button
               className="btn btn-danger my-0 ms-1 ms-md-3  px-1 px-md-2"
-              id="current-tmp"
               type="submit"
             >
               Current
-            </button>
+            </button> */}
           </div>
         </form>
         <FirstSec weatherData={weather} />
